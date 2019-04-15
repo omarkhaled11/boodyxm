@@ -1,28 +1,53 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const style = {
+  container: {
+    flex: 1,
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  count: {
+    fontSize: 120,
+    flex: 1,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  button: {
+    height: 100,
+    width: 200,
+    fontSize: 30,
+    flex: 1,
   }
 }
 
-export default App;
+class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      count: 1000
+    }
+  }
+
+  handleClick = () => {
+    this.setState(prevState => ({ count: prevState.count + 1 }))
+  }
+
+  render () {
+    const { count } = this.state
+    return (
+      <div style={style.container}>
+        <div style={style.count}>XM NAGY</div>
+        <div style={style.count}>{count}</div>
+        <button style={style.button} onClick={this.handleClick}>
+          XM NAGY
+        </button>
+      </div>
+    )
+  }
+}
+
+export default App
